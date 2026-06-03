@@ -4,4 +4,6 @@ class Mailing:
         self.from_address = from_address
         self.cost = cost
         self.track = track
-        
+
+    def __str__(self):
+        return f'Отправление {self.track} из {self.to_address} в {self.from_address}. Стоимость {self.cost} рублей.'
