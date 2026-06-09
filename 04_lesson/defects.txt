@@ -1,0 +1,15 @@
+B-001.  Метод capitalize() понижает регистр части строки, следующей после первого символа
+
+        Класс: StringUtils
+        Метод: capitalize(self, string: str) -> str
+        Входой параметр: "!Внимание"
+        ОР: "!Внимание"
+        ФР: "!внимание"
+
+B-002.  В методе trim() отсутствует обработчик для None
+
+        Класс: StringUtils
+        Метод: trim(self, string: str) -> str
+        Входой параметр: None
+        ОР: Специальное информационное сообщение
+        ФР: Ошибка: AttributeError: 'NoneType' object has no attribute 'startswith'
