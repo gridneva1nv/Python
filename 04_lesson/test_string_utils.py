@@ -26,6 +26,7 @@ def test_capitalize_positive(input_str, expected):
 def test_capitalize_negative(input_str, expected):
     assert string_utils.capitalize(input_str) == expected
 
+
 @pytest.mark.positive
 @pytest.mark.parametrize("input_str, expected", [
     (" test", "test"),
@@ -35,15 +36,17 @@ def test_capitalize_negative(input_str, expected):
 def test_trim_positive(input_str, expected):
     assert string_utils.trim(input_str) == expected
 
+
 @pytest.mark.negative
 @pytest.mark.parametrize("input_str, expected", [
-    ("   ",""),
+    ("   ", ""),
     (None, None),
     (" ! Ahtung", "! Ahtung"),
     ("Text", "Text")
 ])
 def test_trim_negative(input_str, expected):
     assert string_utils.trim(input_str) == expected
+
 
 @pytest.mark.positive
 @pytest.mark.parametrize("input_str, input_ch, expected", [
@@ -55,6 +58,7 @@ def test_trim_negative(input_str, expected):
 def test_contains_positive(input_str, input_ch, expected):
     assert string_utils.contains(input_str, input_ch) == expected
 
+
 @pytest.mark.negative
 @pytest.mark.parametrize("input_str, input_ch, expected", [
     ("String", "T", False),
@@ -62,6 +66,7 @@ def test_contains_positive(input_str, input_ch, expected):
 ])
 def test_contains_negative(input_str, input_ch, expected):
     assert string_utils.contains(input_str, input_ch) == expected
+
 
 @pytest.mark.positive
 @pytest.mark.parametrize("input_str, input_sym, expected", [
@@ -73,6 +78,7 @@ def test_contains_negative(input_str, input_ch, expected):
 ])
 def test_delete_symbol_positive(input_str, input_sym, expected):
     assert string_utils.delete_symbol(input_str, input_sym) == expected
+
 
 @pytest.mark.negative
 @pytest.mark.parametrize("input_str, input_sym, expected", [
