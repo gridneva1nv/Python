@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 
 def test_multiple_elements():
     driver = webdriver.Chrome()
-    driver.get("https://httpbin.org/links/10")
+    driver.get("https://httpbin.org/links/10/10")
 
 # поиск ссылок
     links = driver.find_elements(By.XPATH, "//a")
