@@ -14,14 +14,14 @@ def test_dynamic_loading():
     # 2. Найдите и нажмите на кнопку "Start"
     start_btn = wait.until(EC.element_to_be_clickable(
         (By.CSS_SELECTOR, "#start button")
-        #(By.XPATH, "//button[text() = 'Start']")
+        # (By.XPATH, "//button[text() = 'Start']")
     ))
     start_btn.click()
 
     # 3. Дождитесь появления текста "Hello World!"
     post = wait.until(EC.visibility_of_element_located(
         (By.CSS_SELECTOR, "#finish")
-        #(By.XPATH, "//h4[text() = 'Hello World!']")
+        # (By.XPATH, "//h4[text() = 'Hello World!']")
     ))
 
     # 4. Сделайте скриншот страницы
