@@ -6,6 +6,7 @@ api = YougileAPI(config.BASE_URL)
 api_key = api.get_token()
 projects_id = []
 
+
 def test_create_project_positive():
     project_list = api.get_project_list(api_key)
     project_list_json = project_list.json()
@@ -16,15 +17,18 @@ def test_create_project_positive():
     }
     result = api.create_project(api_key, new_title, users)
     print(result.json())
-    projects_id.append(result.json()["id"])  # запишем для финальной чистки базы
+    # запишем для финальной чистки базы
+    projects_id.append(result.json()["id"])
 
     project_list = api.get_project_list(api_key)
     projects_after = project_list.json()["paging"]["count"]
 
     # статус код = 201
     assert result.status_code == 201
-    assert projects_after - projects_before == 1, print('Количество проектов не увеличилось')
+    assert projects_after - projects_before == 1, (
+        print('Количество проектов не увеличилось'))
     assert project_list.json()["content"][-1]["title"] == new_title
+
 
 def test_create_project_negative():
     project_list = api.get_project_list(api_key)
@@ -41,6 +45,7 @@ def test_create_project_negative():
     print(f'Ошибка: {result.json()["error"]} - {result.json()["message"]}')
     assert projects_after - projects_before == 0
 
+
 def test_get_project_positive():
     # создать проект
     title = "Geted project positive"
@@ -53,7 +58,7 @@ def test_get_project_positive():
 
     result = api.get_project(api_key, new_id)
 
-    assert result.status_code == 200 #, f'Ошибка: {result.json()["error"]}'
+    assert result.status_code == 200
     assert result.json()["title"] == title
     assert result.json()["users"] == users
 
@@ -74,6 +79,7 @@ def test_get_project_negative():
     assert result.status_code > 299
     print(f'Ошибка: {result.json()["error"]} - {result.json()["message"]}')
 
+
 def test_edit_project_positive():
     # создать проект
     title = "Edited project positive"
@@ -91,6 +97,7 @@ def test_edit_project_positive():
 
     assert edited.status_code == 200
     assert result.json()["title"] == new_title
+
 
 def test_edit_project_negative():
     # создать проект
@@ -112,6 +119,7 @@ def test_edit_project_negative():
     print(f'Ошибка: {edited.json()["error"]} - {edited.json()["message"]}')
     assert project.json()["title"] == title
     assert project.json()["users"] == users
+
 
 def test_delete_project_positive():
     count_id = len(projects_id)
