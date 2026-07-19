@@ -1,3 +1,5 @@
 pages
 selenium
 pytest == 9.1.1
+SQLAlchemy == 1.4.50
+psycopg2-binary
